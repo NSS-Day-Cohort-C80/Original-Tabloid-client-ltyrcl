@@ -1,23 +1,31 @@
 const _apiUrl = "/api/comment";
 
 export const getCommentById = (id) => {
-    //return fetch (`${_apiUrl}/${id}`).then((res) => res.json());
-    const found = comments.find((cm) => cm.id === id);
-    return Promise.resolve(found);
+    return fetch(`${_apiUrl}/${id}`).then((res) => res.json());
+};
+
+export const getCommentsByPostId = (postId) => {
+    return fetch(`${_apiUrl}/post/${postId}`).then((res) => res.json());
+};
+
+export const createComment = (comment) => {
+    return fetch(_apiUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(comment),
+    }).then((res) => res.json());
 };
 
 export const updateComment = (comment) => {
-    /*
     return fetch(`${_apiUrl}/${comment.id}`, {
-        method: "PUT";
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(comment),    
+        body: JSON.stringify(comment),
     });
-    */
-   comments = comments.map((cm) => (cm.id === comment.id ? comment : cm));
-   return Promise.resolve(comment);
 };
 
-export const deleteComment = () => {
-
+export const deleteComment = (id) => {
+    return fetch(`${_apiUrl}/${id}`, {
+        method: "DELETE",
+    });
 };
