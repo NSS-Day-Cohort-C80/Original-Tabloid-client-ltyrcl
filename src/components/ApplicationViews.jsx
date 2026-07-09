@@ -4,6 +4,11 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import UserProfileList from "./userprofiles/UserProfilesList";
 import UserProfileDetails from "./userprofiles/UserProfileDetails";
+import PostList from "./posts/PostList";
+import PostDetails from "./posts/PostDetails";
+import PostForm from "./posts/PostForm";
+import CategoryManagement from "./categories/CategoryManagement";
+import TagManagement from "./tags/TagManagement";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -17,6 +22,60 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             </AuthorizedRoute>
           }
         />
+
+        <Route path="posts">
+          <Route
+            index
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <PostList />
+              </AuthorizedRoute>
+            }
+          />
+          <Route
+            path="create"
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <PostForm />
+              </AuthorizedRoute>
+            }
+          />
+          <Route
+            path=":id"
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <PostDetails />
+              </AuthorizedRoute>
+            }
+          />
+          <Route
+            path=":id/edit"
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser}>
+                <PostForm />
+              </AuthorizedRoute>
+            }
+          />
+        </Route>
+
+        <Route
+          path="categories"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+              <CategoryManagement />
+            </AuthorizedRoute>
+          }
+        />
+
+        <Route
+          path="tags"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+              <TagManagement />
+            </AuthorizedRoute>
+          }
+        />
+
         <Route path="/userprofiles">
           <Route
             index
