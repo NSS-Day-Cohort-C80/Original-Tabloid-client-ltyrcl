@@ -1,4 +1,4 @@
-const _apiUrl = "/api/comment";
+const _apiUrl = "/api/comments";
 
 export const getCommentById = (id) => {
     return fetch(`${_apiUrl}/${id}`).then((res) => res.json());
