@@ -21,8 +21,10 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
     <div>
       <Navbar color="light" light fixed="true" expand="lg">
         <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
-          ✍️ Tabloid
+          <img src="/images/sonic-running.gif" alt="Tabloid logo" height="40" />{" "}
+          Tabloid
         </NavbarBrand>
+
         {loggedInUser ? (
           <>
             <NavbarToggler onClick={toggleNavbar} />
