@@ -36,7 +36,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             path="create"
             element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
-                <PostForm />
+                <PostForm loggedInUser={loggedInUser}/>
               </AuthorizedRoute>
             }
           />
@@ -52,7 +52,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             path=":id/edit"
             element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
-                <PostForm />
+                <PostForm loggedInUser={loggedInUser}/>
               </AuthorizedRoute>
             }
           />
