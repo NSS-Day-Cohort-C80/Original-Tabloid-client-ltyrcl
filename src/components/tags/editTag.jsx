@@ -19,7 +19,7 @@ export default function EditTag() {
   const handleSubmit = (e) => {
     e.preventDefault();
     updateTag(tag).then(() => {
-      navigate("/tag");
+      navigate("/tags");
     });
   };
 
@@ -30,7 +30,7 @@ export default function EditTag() {
         <Label>Tag Name</Label>
         <Input
           type="text"
-          value={category.name}
+          value={tag.name}
           onChange={(e) => {
             setTag({ ...tag, name: e.target.value });
           }}
@@ -42,7 +42,7 @@ export default function EditTag() {
       <Button
         color="secondary"
         onClick={() => {
-          navigate("/tag");
+          navigate("/tags");
         }}
       >
         Cancel

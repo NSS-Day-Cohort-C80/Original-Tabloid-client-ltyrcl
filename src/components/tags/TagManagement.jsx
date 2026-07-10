@@ -17,14 +17,14 @@ export default function TagManagement() {
   return (
     <div>
       <p>Tags</p>
-      <Link to="/tag/create">
+      <Link to="/tags/create">
       Create New Tag
       </Link>
       <div>
         {tags.map((t) => (
           <div key={t.id}>
             {t.name}
-            <Link to={`/tag/edit/${t.id}`}>
+            <Link to={`/tags/edit/${t.id}`}>
             Edit Tag
             </Link>
             <button
