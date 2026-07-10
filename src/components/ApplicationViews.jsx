@@ -14,6 +14,7 @@ import EditCategory from "./categories/editCategory";
 import TagManagement from "./tags/TagManagement";
 import NewTag from "./tags/newTag";
 import EditTag from "./tags/editTag";
+import Home from "./Home";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -23,7 +24,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           index
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              <p>Welcome to Tabloid!</p>
+              <Home />
             </AuthorizedRoute>
           }
         />
@@ -41,7 +42,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             path="create"
             element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
-                <PostForm loggedInUser={loggedInUser}/>
+                <PostForm loggedInUser={loggedInUser} />
               </AuthorizedRoute>
             }
           />
@@ -57,7 +58,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             path=":id/edit"
             element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
-                <PostEdit loggedInUser={loggedInUser}/>
+                <PostEdit loggedInUser={loggedInUser} />
               </AuthorizedRoute>
             }
           />
