@@ -7,8 +7,13 @@ import UserProfileDetails from "./userprofiles/UserProfileDetails";
 import PostList from "./posts/PostList";
 import PostDetails from "./posts/PostDetails";
 import PostForm from "./posts/PostForm";
+import PostEdit from "./posts/PostEdit";
 import CategoryManagement from "./categories/CategoryManagement";
+import NewCategory from "./categories/newCategory";
+import EditCategory from "./categories/editCategory";
 import TagManagement from "./tags/TagManagement";
+import NewTag from "./tags/newTag";
+import EditTag from "./tags/editTag";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -52,29 +57,65 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             path=":id/edit"
             element={
               <AuthorizedRoute loggedInUser={loggedInUser}>
-                <PostForm loggedInUser={loggedInUser}/>
+                <PostEdit loggedInUser={loggedInUser}/>
               </AuthorizedRoute>
             }
           />
         </Route>
 
-        <Route
-          path="categories"
-          element={
-            <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
-              <CategoryManagement />
-            </AuthorizedRoute>
-          }
-        />
+        <Route path="categories">
+          <Route
+            index
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+                <CategoryManagement />
+              </AuthorizedRoute>
+            }
+          />
+          <Route
+            path="create"
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+                <NewCategory />
+              </AuthorizedRoute>
+            }
+          />
+          <Route
+            path="edit/:id"
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+                <EditCategory />
+              </AuthorizedRoute>
+            }
+          />
+        </Route>
 
-        <Route
-          path="tags"
-          element={
-            <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
-              <TagManagement />
-            </AuthorizedRoute>
-          }
-        />
+        <Route path="tags">
+          <Route
+            index
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+                <TagManagement />
+              </AuthorizedRoute>
+            }
+          />
+          <Route
+            path="create"
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+                <NewTag />
+              </AuthorizedRoute>
+            }
+          />
+          <Route
+            path="edit/:id"
+            element={
+              <AuthorizedRoute loggedInUser={loggedInUser} roles={["Admin"]}>
+                <EditTag />
+              </AuthorizedRoute>
+            }
+          />
+        </Route>
 
         <Route path="/userprofiles">
           <Route
