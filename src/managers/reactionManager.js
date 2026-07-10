@@ -1,7 +1,7 @@
 const _apiUrl = "/api/reactions";
 
 export const getReactionsByPostId = (postId) => {
-    return fetch(`${_apiUrl}/post/${postId}`).then((res) => res.json());
+    return fetch(`${_apiUrl}?postId=${postId}`).then((res) => res.json());
 };
 
 export const createReaction = (comment) => {
@@ -12,8 +12,15 @@ export const createReaction = (comment) => {
     }).then((res) => res.json());
 };
 
-export const deleteReaction = (id) => {
-    return fetch(`${_apiUrl}/${id}`, {
-        method: "DELETE",
-    });
+export const getMyReaction = (postId) => {
+    return fetch(`${_apiUrl}/mine?postId=${postId}`).then((res) => res.json());
+};
+
+export const deleteReaction = (postId, emojiId, userId) => {
+    return fetch(
+        `${_apiUrl}?postId=${postId}&emojiId=${emojiId}&userId=${userId}`,
+        {
+            method: "DELETE",
+        }
+    );
 };
