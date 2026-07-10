@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+* {
+  cursor: url("/cursor/flag2.png") 16 16, auto !important;
+}
+
+
+
+body {
+  cursor: url("/cursor/flag2.png") 16 16, auto;
+}
+
